@@ -176,7 +176,7 @@ public final class Main extends JavaPlugin implements Listener {
             // Prévient les admins
             for (Player p : Bukkit.getOnlinePlayers()) {
                 if (p.hasPermission("*")) {
-                    p.sendMessage("§7" + player.getName() + " §atried to chat but is muted!\n§aReason: §7"
+                    p.sendMessage("§7" + player.getName() + " §ctried to chat but is muted!\n§aReason: §7"
                             + reason + "\n§aMuted by: §7" + muter + "\n§aTime remaining: §7" + timeMsg);
                 }
             }
@@ -190,7 +190,7 @@ public final class Main extends JavaPlugin implements Listener {
 
             for (Player p : Bukkit.getOnlinePlayers()) {
                 if (p.hasPermission("*")) {
-                    p.sendMessage("§7" + player.getName() + " §etried to chat but is muted!\n§aReason: §7"
+                    p.sendMessage("§7" + player.getName() + " §ctried to chat but is muted!\n§aReason: §7"
                             + reason + "\n§aMuted by: §7" + muter + "\n§aTime remaining: §7Permanent");
                 }
             }

@@ -38,17 +38,16 @@ public class BanCommand implements CommandExecutor {
                 banPlayerCommand(target, reason, commandSender.getName(), durationMs);
 
                 String timeMsg = durationMs == -1 ? "Permanent" : durationArg;
-                commandSender.sendMessage("§aPlayer §7" + targetPlayer + " §ahas been banned for: §7" + reason + " §a(Duration: " + timeMsg + ")");
 
                 for (Player player : Bukkit.getOnlinePlayers()) {
-                    if (player.hasPermission("punishcore.ban") && !player.equals(commandSender)) {
-                        player.sendMessage("§c[Punish Core] §a-[Ban] - §ePlayer §7" + targetPlayer + " §ehas been banned by §7" + commandSender.getName() + " §efor: §7" + reason + " §e(Duration: " + timeMsg + ")");
+                    if (player.hasPermission("punishcore.ban")) {
+                        player.sendMessage("§c[Punish Core] §a- [Ban] - §ePlayer §7" + targetPlayer + " §ehas been banned by §7" + commandSender.getName() + " §efor: §7" + reason + " §e(Duration: " + timeMsg + ")");
                     }
                 }
 
                 return true;
             } else {
-                commandSender.sendMessage("§cUsage: §7/ban <player> <temps> <raison>");
+                commandSender.sendMessage("§cUsage: §7/ban <player> <time> <reason>");
                 return false;
             }
         } else {

@@ -56,11 +56,10 @@ public class UnbanCommand implements CommandExecutor {
             return true;
         }
 
-        commandSender.sendMessage("§aPlayer §7" + targetPlayer + " §ehas been unbanned.");
 
         for (Player player : Bukkit.getOnlinePlayers()) {
-            if (player.hasPermission("punishcore.unban") && !player.equals(commandSender)) {
-                player.sendMessage("§c[Punish Core] §a-[Ban] - §ePlayer §7" + targetPlayer + " §ehas been unbanned by §7" + commandSender.getName() + ".");
+            if (player.hasPermission("punishcore.unban")) {
+                player.sendMessage("§c[Punish Core] §a- [Ban] - §ePlayer §7" + targetPlayer + " §ehas been unbanned by §7" + commandSender.getName() + ".");
             }
         }
 

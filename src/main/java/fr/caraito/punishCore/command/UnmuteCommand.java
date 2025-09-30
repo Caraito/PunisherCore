@@ -54,11 +54,18 @@ public class UnmuteCommand implements CommandExecutor {
             e.printStackTrace();
         }
 
-        String msg = "§c[Punish Core] §a-[Mute] - §ePlayer §7" + targetPlayer + " §ehas been unmuted by §e" + commandSender.getName() + ".";
+        Player playerWhoMute = Bukkit.getPlayer(targetPlayer);
+
+        if (playerWhoMute != null) {
+            playerWhoMute.sendMessage("§aYou have been unmuted");
+        }
+
+
+        String msg = "§c[Punish Core] §a- [Mute] - §ePlayer §7" + targetPlayer + " §ehas been unmuted by §e" + commandSender.getName() + ".";
 
         // Notify all players with permission
         for (Player p : Bukkit.getOnlinePlayers()) {
-            if (p.hasPermission("punishcore.unmute") && !p.equals(commandSender)) {
+            if (p.hasPermission("punishcore.unmute")) {
                 p.sendMessage(msg);
             }
         }

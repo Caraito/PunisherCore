@@ -32,9 +32,9 @@ public class WarnCommand implements CommandExecutor {
         target.sendMessage("§cYou have received a warning! §aReason: §7" + reason);
 
         // Notify all admins with permission
-        String adminMsg = "§c[Punish Core] §a-[Warn] - §7" + target.getName() + " §ehas been warned by §7" + commandSender.getName() + ". §aReason: §7" + reason;
+        String adminMsg = "§c[Punish Core] §a- [Warn] - §7" + target.getName() + " §ehas been warned by §7" + commandSender.getName() + ". §aReason: §7" + reason;
         for (Player p : Bukkit.getOnlinePlayers()) {
-            if (p.hasPermission("punishcore.warn") && !p.equals(commandSender)) {
+            if (p.hasPermission("punishcore.warn")) {
                 p.sendMessage(adminMsg);
             }
         }

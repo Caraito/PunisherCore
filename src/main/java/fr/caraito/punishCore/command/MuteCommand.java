@@ -37,17 +37,23 @@ public class MuteCommand implements CommandExecutor {
 
                 mutePlayerCommand(target, reason, commandSender.getName(), durationMs);
 
-                commandSender.sendMessage("§aPlayer §7" + targetPlayer + " §ahas been muted for: §7" + reason + " §a(Duration: " + durationArg + ")");
+                Player playerWhoMute = Bukkit.getPlayer(targetPlayer);
+
+                if (playerWhoMute != null) {
+                    playerWhoMute.sendMessage("§cYou have been muted! §aReason: §7" + reason + " §aDuration: §7" + durationArg);
+                }
+
+
 
                 for (Player player : Bukkit.getOnlinePlayers()) {
-                    if (player.hasPermission("punishcore.mute") && !player.equals(commandSender)) {
-                        player.sendMessage("§c[Punish Core] §a-[Mute] - §ePlayer §7" + targetPlayer + " §ehas been muted by §7" + commandSender.getName() + " §efor: §7" + reason + " §e(Duration: " + durationArg + ")");
+                    if (player.hasPermission("punishcore.mute")) {
+                        player.sendMessage("§c[Punish Core] §a- [Mute] - §ePlayer §7" + targetPlayer + " §ehas been muted by §7" + commandSender.getName() + " §efor: §7" + reason + " §e(Duration: " + durationArg + ")");
                     }
                 }
 
                 return true;
             } else {
-                commandSender.sendMessage("§cUsage: §7/mute <player> <temps> <raison>");
+                commandSender.sendMessage("§cUsage: §7/mute <player> <time> <reason>");
                 return false;
             }
         } else {
@@ -76,6 +82,9 @@ public class MuteCommand implements CommandExecutor {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
+
     }
 
     // Retourne la durée en ms, ou null si erreur
